@@ -1,0 +1,251 @@
+@font-face {
+    src: url(../fonts/proxima-nova-semibold-59841a98cf4a9_0.otf);
+    font-family: 'slide1';
+}
+
+@font-face {
+    src: url(../fonts/Mark_Simonson_Proxima_Nova_Medium.otf);
+    font-family: 'Proxima_Nova_Medium';
+}
+
+@font-face {
+    src: url(../fonts/Proxima-Nova-Bold.otf);
+    font-family: 'Proxima-Nova-Bold';
+}
+
+@font-face {
+    src: url(../fonts/Optima.ttc);
+    font-family: 'detail_fonts';
+}
+
+* {
+    font-family: 'slide1' !important;
+}
+
+
+
+.main-spegra {
+    margin-right: 90px;
+    margin-left: 90px;
+    position: relative;
+}
+
+
+
+.emcure-logo {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.emcure-logo img {
+    width: 120px;
+    height: auto;
+}
+
+.spegra-logo {
+    margin-top: 0px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spegra-logo img {
+    width: 410px;
+    height: auto;
+}
+
+.line-2 {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.line-2 img {
+    width: 842px;
+    height: 100%;
+
+}
+
+.pill-div {
+    position: relative;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pill-img img {
+    width: 279px;
+    height: 132px;
+}
+
+.pill-1 {
+    position: relative;
+}
+
+.pill-1 .pill-text {
+    position: absolute;
+    top: 20px;
+    right: 31px;
+    font-family: 'Proxima-Nova-Bold' !important;
+    font-size: 15.41px;
+    color: #2e3192;
+}
+
+.pill-2 {
+    position: relative;
+}
+
+.pill-2 .pill-text {
+    position: absolute;
+    top: 20px;
+    right: 31px;
+    font-family: 'Proxima-Nova-Bold' !important;
+    font-size: 15.41px;
+    color: #2e3192;
+}
+
+.pill-3 {
+    position: relative;
+}
+
+.pill-3 .pill-text {
+    position: absolute;
+    top: 20px;
+    right: 13px;
+    font-family: 'Proxima-Nova-Bold' !important;
+    font-size: 15.41px;
+    color: #2e3192;
+}
+
+.tablets-pack {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    /* margin-top: 15px; */
+}
+
+.tablets-pack img {
+    width: 380px;
+    height: auto;
+}
+
+.dosage-main {
+    position: absolute;
+    right: -20px;
+    top: 110px;
+}
+
+.dosage-img img {
+    width: 236px;
+    height: 20px;
+}
+
+.doesge-text span {
+    font-family: 'Proxima_Nova_Medium' !important;
+    font-size: 11.2px;
+    color: #231f20;
+
+}
+
+.doesge-text .dos {
+    font-family: 'Proxima-Nova-Bold' !important;
+    font-size: 11.2px;
+    color: #be1e2d;
+
+}
+
+.doesge-text .d3 {
+    font-family: 'Proxima-Nova-Bold' !important;
+    font-size: 11.2px;
+    color: #be1e2d;
+    position: relative;
+    top: -3px;
+    right: 3px;
+
+}
+
+.doesge-text {
+    text-align: center;
+    /* margin-top: 5px; */
+}
+
+.dosage-2 {
+    margin-top: 15px;
+
+}
+
+
+
+.health .h-div {
+    background: #178548;
+    width: 520px;
+    height: 50px;
+    font-family: 'Proxima-Nova-Bold' !important;
+    font-size: 12px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+
+}
+
+.health1 {
+    width: 530px;
+    height: 60px;
+    background: rgb(23, 133, 72);
+    background: linear-gradient(270deg, rgba(23, 133, 72, 1) 0%, rgba(27, 105, 61, 1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+
+.health {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-top: 15px; */
+    /* background: #178548; */
+}
+
+.health span {
+    text-align: center;
+    font-family: 'Proxima-Nova-Bold' !important;
+    font-size: 12px;
+}
+
+.footer-div {
+    background: rgb(203, 32, 47);
+    background: linear-gradient(90deg, rgba(203, 32, 47, 1) 0%, rgba(40, 63, 148, 1) 51%, rgba(9, 106, 55, 1) 100%);
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-div span {
+    font-family: 'Proxima_Nova_Medium' !important;
+    font-size: 5px;
+    color: #ffffff;
+    margin-right: 15px;
+}
+
+img.pill2 {
+    position: absolute;
+    top: 11px;
+    left: 23px;
+    width: 81px;
+    height: auto;
+}

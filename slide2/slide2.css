@@ -1,0 +1,477 @@
+@font-face {
+    src: url(../fonts/proxima-nova-semibold-59841a98cf4a9_0.otf);
+    font-family: 'slide1';
+}
+
+@font-face {
+    src: url(../fonts/Mark_Simonson_Proxima_Nova_Medium.otf);
+    font-family: 'Proxima_Nova_Medium';
+}
+
+@font-face {
+    src: url(../fonts/Proxima-Nova-Bold.otf);
+    font-family: 'Proxima-Nova-Bold';
+}
+
+@font-face {
+    src: url(../fonts/Optima.ttc);
+    font-family: 'detail_fonts';
+}
+
+@font-face {
+    src: url(../fonts/Proxima-Nova-Extrabold.otf);
+    font-family: 'Proxima-Nova-Extrabold';
+}
+
+@font-face {
+    src: url(../fonts/proxima-nova-semibold.otf);
+    font-family: 'proxima-nova-semibold';
+}
+
+
+
+* {
+    font-family: 'slide1' !important;
+}
+
+.main-spegra {
+    margin-right: 90px;
+    margin-left: 90px;
+    position: relative;
+}
+
+.emcure-logo {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.emcure-logo img {
+    width: 120px;
+    height: auto;
+}
+
+.spegra-logo {
+    margin-top: 0px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spegra-logo img {
+    width: 410px;
+    height: auto;
+}
+
+.line-2 {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.line-2 img {
+    width: 842px;
+    height: 100%;
+
+}
+
+.pill-div {
+    position: relative;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pill-img img {
+    width: 310px;
+    height: 134px;
+}
+
+.pill-1 {
+    position: relative;
+}
+
+.pill-1 .pill-text {
+    position: absolute;
+    top: 25px;
+    right: 31px;
+    font-family: 'Proxima-Nova-Bold' !important;
+    font-size: 17px;
+    color: #2e3192;
+}
+
+.pill-2 {
+    position: relative;
+}
+
+.pill-2 .pill-text {
+    position: absolute;
+    top: 25px;
+    right: 31px;
+    font-family: 'Proxima-Nova-Bold' !important;
+    font-size: 17px;
+    color: #2e3192;
+}
+
+.pill-3 {
+    position: relative;
+}
+
+.pill-3 .pill-text {
+    position: absolute;
+    top: 22px;
+    right: 13px;
+    font-family: 'Proxima-Nova-Bold' !important;
+    font-size: 17px;
+    color: #2e3192;
+}
+
+.tablets-pack {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.tablets-pack img {
+    width: 380px;
+    height: auto;
+}
+
+.dosage-main {
+    position: absolute;
+    right: 0;
+    top: 95px;
+}
+
+.dosage-img img {
+    width: 290px;
+    height: auto;
+}
+
+.doesge-text span {
+    font-family: 'Proxima_Nova_Medium' !important;
+    font-size: 14px;
+    color: #231f20;
+
+}
+
+.doesge-text .dos {
+    font-family: 'Proxima-Nova-Bold' !important;
+    font-size: 13px;
+    color: #be1e2d;
+
+}
+
+.doesge-text .d3 {
+    font-family: 'Proxima-Nova-Bold' !important;
+    font-size: 11px;
+    color: #be1e2d;
+    position: relative;
+    top: -3px;
+    right: 3px;
+
+}
+
+.doesge-text {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.dosage-2 {
+    margin-top: 20px;
+
+}
+
+
+
+.health .h-div {
+    background: #178548;
+    width: 520px;
+    height: 50px;
+    font-family: 'Proxima-Nova-Bold' !important;
+    font-size: 12px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+
+}
+
+.health1 {
+    width: 530px;
+    height: 60px;
+    background: rgb(23, 133, 72);
+    background: linear-gradient(270deg, rgba(23, 133, 72, 1) 0%, rgba(27, 105, 61, 1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+
+.health {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    /* background: #178548; */
+}
+
+.health span {
+    text-align: center;
+    font-family: 'Proxima-Nova-Bold' !important;
+    font-size: 12px;
+}
+
+.footer-div {
+    background: rgb(203, 32, 47);
+    background: linear-gradient(90deg, rgba(203, 32, 47, 1) 0%, rgba(40, 63, 148, 1) 51%, rgba(9, 106, 55, 1) 100%);
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-div span {
+    font-family: 'Proxima_Nova_Medium' !important;
+    font-size: 5px;
+    color: #ffffff;
+    margin-right: 15px;
+}
+
+img.pill2 {
+    position: absolute;
+    top: 11px;
+    left: 23px;
+    width: 81px;
+    height: auto;
+}
+
+
+.impaact-div img {
+    width: 518px;
+    height: 86px;
+}
+
+.impaact-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+}
+
+.impaact-text-1 {
+    position: absolute;
+    top: 19%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 21px;
+    color: #ffffff;
+    font-family: 'Proxima-Nova-Bold' !important;
+}
+
+.impaact-text-1 span {
+    font-family: 'Proxima-Nova-Bold' !important;
+}
+
+.impaact-text-1 .i1 {
+    font-family: 'Proxima-Nova-Bold' !important;
+    font-size: 16px;
+    position: relative;
+    top: -6px;
+    right: -2px;
+
+}
+
+.safety-text span {
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 19px;
+    color: #ffffff;
+    font-family: 'Proxima_Nova_Medium' !important;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.efavirenz-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.efavirenz-div img {
+    width: 945px;
+    height: auto;
+}
+
+.efavi-div {
+    position: absolute;
+    top: 55%;
+    left: 22%;
+    transform: translate(-50%, -50%);
+    font-size: 21px;
+    color: #ffffff;
+    font-family: 'Proxima-Nova-Extrabold' !important;
+    display: flex;
+}
+
+
+.efavi-div .e1 {
+    font-size: 21px;
+    color: #ce0e2d;
+    font-family: 'Proxima-Nova-Extrabold' !important;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.efavi-div .e2 {
+    font-size: 21px;
+    color: #231f20;
+    font-family: 'proxima-nova-semibold' !important;
+}
+
+.efavi-text {
+    position: absolute;
+    top: -23px;
+    display: flex;
+    right: -47px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.efv-text {
+    position: relative;
+    top: 13px;
+    left: -14px;
+    font-family: 'proxima-nova-semibold' !important;
+    font-size: 21px;
+}
+
+
+.dolut-div {
+    position: absolute;
+    top: 53%;
+    right: 0%;
+    transform: translate(-50%, -50%);
+    font-size: 19px;
+    color: #ffffff;
+    font-family: 'Proxima-Nova-Extrabold' !important;
+    display: flex;
+}
+
+.dolut-text {
+    position: absolute;
+    top: -23px;
+    right: -48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dolut-text .d1 {
+    font-size: 21px;
+    color: #53668c;
+    font-family: 'Proxima-Nova-Extrabold' !important;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dolut-text .d2 {
+    font-size: 21px;
+    color: #231f20;
+    font-family: 'proxima-nova-semibold' !important;
+}
+
+.dtg {
+    position: relative;
+    top: 13px;
+    left: 50px;
+    font-family: 'proxima-nova-semibold' !important;
+    font-size: 21px;
+}
+
+.taf {
+    position: relative;
+    top: 13px;
+    left: 86px;
+    font-family: 'proxima-nova-semibold' !important;
+    font-size: 21px;
+}
+
+.efv-monther img {
+    width: 335px;
+    height: 100%;
+}
+
+.efv-monther {
+    position: relative;
+    padding-left: 10px;
+    top: 0;
+    margin-top: 10px;
+}
+
+.mother-img {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dtg-monther img {
+    width: 472px;
+    height: 100%;
+}
+
+.dtg-monther {
+    position: absolute;
+    right: -10px;
+    top: 3px;
+}
+
+.line-m {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.line-m img {
+    width: 690px;
+    height: 100%;
+}
+
+.mother-text {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Proxima-Nova-Bold' !important;
+    color: #231f20;
+    margin-bottom: 26px;
+}
+
+.line-m1 {
+    transform: none !important;
+}
