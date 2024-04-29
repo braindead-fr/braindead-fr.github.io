@@ -28,14 +28,25 @@ spriteRunRight.src = './pics/spriteRunRight.png'
 const spriteRunLeft = new Image()
 spriteRunLeft.src = './pics/spriteRunLeft.png'
 
+const stand = new Image()
+stand.src = './pics/stand.png'
+
+const flag = new Image()
+flag.src = './pics/flag.png'
+
+const win = new Image()
+win.src = './pics/uwin.png'
+
 const canvas = document.querySelector('canvas')
 
 const c  = canvas.getContext('2d')
 
+let maincontent = document.getElementById('wrapper')
+
 canvas.height = 576
 canvas.width = 900
 
-let currentkey
+let lastkey
 const gravity = 1;
 class Player{
   constructor(){
@@ -252,6 +263,76 @@ class npcobj{
 
 }
 
+class winpole{
+  constructor({x,y, image}){
+    this.position = {
+      x,
+      y
+    }
+
+    
+
+    this.image = image
+    this.width = 40
+    this.height = 300
+  }
+  
+  draw(){
+
+    c.drawImage(this.image, this.position.x, this.position.y,10,300 )
+    // c.fillRect(this.position.x, this.position.y,this.width,this.height)
+  }
+
+
+}
+
+class flagpole{
+  constructor({x,y, image}){
+    this.position = {
+      x,
+      y
+    }
+
+    this.velocity={
+      x:0,
+      y:0
+    }
+    
+    this.image = image
+    this.width = 40
+    this.height = 40
+  }
+  
+  draw(){
+
+    this.position.y += this.velocity.y;
+    c.drawImage(this.image, this.position.x, this.position.y,70,50 )
+    // c.fillRect(this.position.x, this.position.y,this.width,this.height)
+  }
+
+
+}
+
+class winpage{
+  constructor({x,y, image}){
+    this.position={
+      x,
+      y
+    }
+
+    this.image = image
+    this.width = 500
+    this.height = 500
+  }
+  
+  draw(){
+
+    c.drawImage(this.image, this.position.x, this.position.y, 500,500 )
+    // c.fillRect(this.position.x, this.position.y,this.width,this.height)
+  }
+  
+}
+
 
 
 let player = new Player()
@@ -298,6 +379,24 @@ let bgobj = [new npcobj({
   y:80,
   image: cloud
 })]
+
+let pole =  [new winpole({
+  x: 1356,
+  y:170,
+  image: stand
+})]
+let flagging =  [new flagpole({
+  x: 1356,
+  y:170,
+  image: flag
+})]
+
+let winmatch = [new winpage({
+  x: 170,
+  y:50,
+  image: win
+})]
+// let pole = 1046
 
 let scrolloffset = 0
 
@@ -346,7 +445,24 @@ function init() {
     y:80,
     image: cloud
   })]
+
+  pole =  [new winpole({
+    x: 1356,
+    y:170,
+    image: stand
+  })]
+  flagging =  [new flagpole({
+    x: 1356,
+    y:170,
+    image: flag
+  })]
   
+  winmatch = [new winpage({
+    x: 170,
+    y:50,
+    image: win
+  })]
+
   scrolloffset = 0
 }
 const keys = {
@@ -357,8 +473,11 @@ const keys = {
     pressed: false
   },
   down:{
-    pressed:false}
+    pressed:false
+  }
 }
+
+
 
 function animate(){
   requestAnimationFrame(animate)
@@ -374,7 +493,7 @@ function animate(){
   platforms.forEach(platform=>{
     platform.draw()
 
- 
+
   })
 
 
@@ -388,6 +507,13 @@ function animate(){
     bigpep.draw()
   })
 
+  pole.forEach(win =>{
+    win.draw()
+  })
+
+  flagging.forEach(flags =>{
+    flags.draw()
+  })
 
 
   if(keys.right.pressed && player.position.x <  410){
@@ -413,6 +539,12 @@ function animate(){
       bgobj.forEach(bigobjs=>{
         bigobjs.position.x -= 10
       })
+      pole.forEach(win=>{
+        win.position.x -= 10
+      })
+      flagging.forEach(win=>{
+        win.position.x -= 10
+      })
     }
     else if(keys.left.pressed && scrolloffset > 0){
       scrolloffset -= 10
@@ -427,6 +559,12 @@ function animate(){
       })
       bgobj.forEach(bigobjs=>{
         bigobjs.position.x += 10
+      })
+      pole.forEach(win=>{
+        win.position.x += 10
+      })
+      flagging.forEach(win=>{
+        win.position.x += 10
       })
     }
   }
@@ -467,8 +605,35 @@ function animate(){
     //   }
     // });
 
-    let collidingWithPipe = false;
+    let touchingpole = false
+    pole.forEach(win=>{
+      if (player.position.x + player.width >= win.position.x &&
+        player.position.x <= win.position.x + win.width &&
+        player.position.y + player.height >= win.position.y &&
+        player.position.y <= win.position.y + win.height){
+
+          touchingpole = true
+          if(touchingpole){
+            player.velocity.x = 0
+
+            flagging.forEach(flags => {
+              // Move the flag downwards until it reaches the bottom of the pole
+              if (flags.position.y + flags.height < win.position.y + win.height) {
+                flags.velocity.y = 6; // Set a positive value to move the flag downwards
+              } else {
+                flags.velocity.y = 0; // Stop flag movement once it reaches the bottom of the pole
+              }
+            });
+          }
+      }
+    })
+
+
+    collidingWithPipe = false;
     pipe.forEach(pipe => {
+
+
+
       if (
         player.position.x + player.width >= pipe.position.x &&
         player.position.x <= pipe.position.x + pipe.width &&
@@ -478,12 +643,11 @@ function animate(){
         collidingWithPipe = true;
         if(player.position.x + player.width == pipe.position.x){
           if (player.velocity.x > 0 && keys.right.pressed) {
-                    // Moving right and colliding with pipe, stop horizontal movement
-                    player.velocity.x = 0;
-                  }
-                  else if(player.velocity.x <0 && keys.left.pressed){
-                    player.velocity.x -= 10;
-                  }
+            player.velocity.x = 0;
+          }
+          else if(player.velocity.x <0 && keys.left.pressed){
+            player.velocity.x -= 10;
+                }
         }
         
         else if (player.velocity.x < 0 && keys.left.pressed) 
@@ -492,6 +656,8 @@ function animate(){
           player.velocity.x - 0;
         }
       }
+
+      
 
       if (
         player.position.x + player.width >= pipe.position.x &&
@@ -516,6 +682,20 @@ function animate(){
         // Adjust player's position and velocity as necessary
         player.velocity.y = 0
       }
+
+
+      if(player.position.x == pipe.position.x +pipe.width &&
+        player.position.y + player.height >= pipe.position.y &&
+        player.position.y <= pipe.position.y + pipe.height){
+        collidingWithPipe = true;
+        if(player.velocity.x < 0){
+          player.velocity.x = 0
+        }
+        else{
+          player.velocity.x = 10
+        }
+      }
+
     });
 
     bigpip.forEach(pipe => {
@@ -556,6 +736,18 @@ function animate(){
         }
       }
 
+      if(player.position.x == pipe.position.x +pipe.width &&
+        player.position.y + player.height >= pipe.position.y &&
+        player.position.y <= pipe.position.y + pipe.height){
+        collidingWithPipe = true;
+        if(player.velocity.x < 0){
+          player.velocity.x = 0
+        }
+        else{
+          player.velocity.x = +10
+        }
+      }
+
       if (
         player.position.y + player.height <= pipe.position.y && // Player's bottom edge is above or at the same level as the top edge of the pipe
         player.position.y + player.height + player.velocity.y >= pipe.position.y && // Player's bottom edge will intersect with or be above the top edge of the pipe after movement
@@ -568,6 +760,8 @@ function animate(){
       }
     });
 
+
+    
 //  pipe.forEach(pipe => {
 //   // Check for collision with top of platform or pipe
 //   if (
@@ -597,14 +791,47 @@ function animate(){
 //   }
 // });
 
-  if(currentkey === 'right'){
-
+  if(keys.right.pressed && lastkey === 'right' && player.currentsprit !==player.sprites.run.right){
+    player.frames = 1
+    
+    player.currentsprit = player.sprites.run.right
+    player.currentCropwidth = player.sprites.run.cropWidth
+    player.width = player.sprites.run.width
+  }
+  else if(keys.left.pressed && lastkey === 'left' && player.currentsprit !==player.sprites.run.left){
+    player.frames = 1
+    
+    player.currentsprit = player.sprites.run.left
+    player.currentCropwidth = player.sprites.run.cropWidth
+    player.width = player.sprites.run.width
+  }
+  else if(!keys.right.pressed && lastkey === 'right' && player.currentsprit !==player.sprites.stand.right){
+    player.frames = 1
+    
+    player.currentsprit = player.sprites.stand.right
+    player.currentCropwidth = player.sprites.stand.cropWidth
+    player.width = player.sprites.stand.width
+  }
+  else if(!keys.left.pressed && lastkey === 'left' && player.currentsprit !==player.sprites.stand.left){
+    player.frames = 1
+    
+    player.currentsprit = player.sprites.stand.left
+    player.currentCropwidth = player.sprites.stand.cropWidth
+    player.width = player.sprites.stand.width
   }
 
-    if(scrolloffset == 1500){
+  let haswon = false
+    if(!haswon && scrolloffset >= 910 ){
       console.log('u win');
+      haswon = true
+      // maincontent.appendChild(win)
     }
     
+    if(haswon){
+      winmatch.forEach(win=>{
+        win.draw()
+      })
+    }
 
     if(player.position.y > canvas.height) {
         console.log('u lose');
@@ -623,18 +850,14 @@ addEventListener('keydown', (event)=>{
     case 'A':
     case 'ArrowLeft':
       keys.left.pressed = true
-      player.currentsprit = player.sprites.run.left
-      player.currentCropwidth = player.sprites.run.cropWidth
-      player.width = player.sprites.run.width
+      lastkey = 'left'
       break;
     case 'd':
     case 'D':
     case 'ArrowRight':
       // console.log('d');
       keys.right.pressed = true
-      player.currentsprit = player.sprites.run.right
-      player.currentCropwidth = player.sprites.run.cropWidth
-      player.width = player.sprites.run.width
+      lastkey = 'right'
       break;
     case 's':
     case 'S':
@@ -659,18 +882,12 @@ addEventListener('keyup', (event)=>{
     case 'A':
     case 'ArrowLeft':
       keys.left.pressed = false
-      player.currentsprit = player.sprites.stand.left
-      player.currentCropwidth = player.sprites.stand.cropWidth
-      player.width = player.sprites.stand.width
       break;
     case 'D':
     case 'd':
     case 'ArrowRight':
       // console.log('d');
       keys.right.pressed = false
-      player.currentsprit = player.sprites.stand.right
-      player.currentCropwidth = player.sprites.stand.cropWidth
-      player.width = player.sprites.stand.width
       break;
     case 'w':
     case 'W':
