@@ -37,6 +37,8 @@ flag.src = './pics/flag.png'
 const win = new Image()
 win.src = './pics/uwin.png'
 
+const jumpsfx = new Audio('./audio/jump.mp3')
+
 const canvas = document.querySelector('canvas')
 
 const c  = canvas.getContext('2d')
@@ -398,7 +400,15 @@ let winmatch = [new winpage({
 })]
 // let pole = 1046
 
+
+// Call the function to start playing the theme song
+
+
 let scrolloffset = 0
+
+function playAudio(sfx) {
+  sfx.play()
+}
 
 function init() {
   
@@ -486,7 +496,6 @@ function animate(){
   genericobj.forEach(genericobjs=>{
     genericobjs.draw()
   })
-  
   bgobj.forEach(str=>{
     str.draw()
   })
@@ -569,7 +578,6 @@ function animate(){
     }
   }
 
-// platform collision detection
   platforms.forEach(platform=>{
     if (player.position.y + player.height <= platform.position.y && 
       player.position.y + player.height + player.velocity.y >= platform.position.y && 
@@ -583,8 +591,7 @@ function animate(){
           player.position.x <= platform.position.x + platform.width &&
           player.position.y + player.height >= platform.position.y &&
           player.position.y <= platform.position.y + platform.height) {
-        // Player is standing on the platform
-        player.velocity.x = 0; // Stop horizontal movement
+        player.velocity.x = 0; 
       }
     })
 
@@ -870,6 +877,7 @@ addEventListener('keydown', (event)=>{
     case ' ':
     case 'ArrowUp':
       player.velocity.y -= 15
+      playAudio(jumpsfx)
       break;
 
     default:
